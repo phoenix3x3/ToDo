@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/sideNavBar.sass";
-class SideNavBar extends React.Component {
+import "../../styles/sidebar.sass";
+export class Sidebar extends React.Component {
   render() {
     const { isOpen } = this.props;
     return (
@@ -41,5 +41,3 @@ class SideNavBar extends React.Component {
 //     );
 //   }
 // }
-
-export default SideNavBar;
