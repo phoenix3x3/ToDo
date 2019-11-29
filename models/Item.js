@@ -12,14 +12,6 @@ const ItemSchema = new Schema({
     type: Date,
     default: Date.now
   }
-  // priority: {
-  //   type: String,
-  //   required: true
-  // },
-  // description: {
-  //   type: String,
-  //   default: ""
-  // }
 });
 
 module.exports = Item = mongoose.model("item", ItemSchema);

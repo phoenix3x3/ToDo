@@ -1,23 +1,24 @@
 import React from "react";
 import "../../styles/sidebar.sass";
+import { Link } from "react-router-dom";
+
 export class Sidebar extends React.Component {
   render() {
     const { isOpen } = this.props;
     return (
-      <section className={`wrapper__sideNavBar ${isOpen ? "show" : "hide"}`}>
+      <div className={`wrapper__sideNavBar ${isOpen ? "show" : "hide"}`}>
         <div>
           <h1 className="wrapper__brandName">ToDo</h1>
         </div>
         <nav className="navBar">
-          <div className="navBar__link">
-            <a href="/">Home</a>
-          </div>
-
-          <div className="navBar__link">
-            <a href="/">Settings</a>
-          </div>
+          <Link to="/" className="navBar__link">
+            Home
+          </Link>
+          <Link to="/settings" className="navBar__link">
+            Settings
+          </Link>
         </nav>
-      </section>
+      </div>
     );
   }
 }
