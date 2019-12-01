@@ -1,23 +1,28 @@
 import React from "react";
 import "../../styles/main.sass";
 // import { Card } from "./Card";
-
-import uuid from "uuid";
+import { connect } from "react-redux";
+import { getItems } from "../../actions/itemActions";
+import PropTypes from "prop-types";
 import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-export class Main extends React.Component {
-  state = {
-    items: [
-      { id: uuid(), name: "First Task", isCompleted: true },
-      { id: uuid(), name: "Second Task", isCompleted: false },
-      { id: uuid(), name: "Third Task", isCompleted: true },
-      { id: uuid(), name: "Fourth Task", isCompleted: false }
-    ],
-    countToDo: 0,
-    countCompleted: 0
-  };
+class Main extends React.Component {
+  // state = {
+  //   items: [
+  //     { id: uuid(), name: "First Task", isCompleted: true },
+  //     { id: uuid(), name: "Second Task", isCompleted: false },
+  //     { id: uuid(), name: "Third Task", isCompleted: true },
+  //     { id: uuid(), name: "Fourth Task", isCompleted: false }
+  //   ],
+  //   countToDo: 0,
+  //   countCompleted: 0
+  // };
+
+  componentDidMount() {
+    this.props.getItems();
+  }
   render() {
-    const { items } = this.state;
+    const { items } = this.props.item;
     // const { countToDo } = this.state;
     return (
       <section className="mainWrapper">
@@ -87,3 +92,14 @@ export class Main extends React.Component {
     );
   }
 }
+
+Main.propTypes = {
+  getItems: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  item: state.item
+});
+
+export default connect(mapStateToProps, { getItems })(Main);
