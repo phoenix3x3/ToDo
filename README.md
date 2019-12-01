@@ -1,14 +1,9 @@
 # ToDo
 
 ### Quick Start
+ 1.Download ZIP or Clone Rep
 
- Install dependencies for server</br>
-<code>npm install</code>
-
- Install dependencies for client </br>
-<code>npm run client-install</code></code>
-
- Run the client & server with concurrently</br>
+ 2. Run the client & server with concurrently</br>
 <code>npm run dev</code>
 
  Client-side http://localhost:3000
