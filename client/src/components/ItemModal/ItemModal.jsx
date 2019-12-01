@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   Modal,
   ModalHeader,
   ModalBody,
@@ -12,12 +11,12 @@ import {
 import { connect } from "react-redux";
 import "../../styles/header.sass";
 import { addItem } from "../../actions/itemActions";
-// import { throws } from "assert";
-
+import "../../styles/itemModal.sass";
 class ItemModal extends React.Component {
   state = {
     modal: false,
     name: "",
+    isCompleted: false,
     description: "", //
     date: new Date() //
   };
@@ -52,12 +51,7 @@ class ItemModal extends React.Component {
   render() {
     return (
       <div>
-        <button
-          //   color="dark"
-          //   style={{ marginBottom: "2rem" }}
-          className="headerWrapper__button"
-          onClick={this.toggle}
-        >
+        <button className="headerWrapper__button" onClick={this.toggle}>
           Add ToDo
         </button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
@@ -76,14 +70,17 @@ class ItemModal extends React.Component {
                 <Label for="item">Description</Label>
                 <Input
                   type="text"
-                  name="name"
+                  name="description"
                   id="id"
                   placeholder="Add Decription"
                   onChange={this.onChangeDesc}
                 />
-                <Button color="dark" style={{ marginTop: "2rem" }} block>
+                <button
+                  className="button__addTask"
+                  // style={{ marginTop: "2rem"; background-color: "rgb(14,26,53)" }}
+                >
                   Add Task
-                </Button>
+                </button>
               </FormGroup>
             </Form>
           </ModalBody>

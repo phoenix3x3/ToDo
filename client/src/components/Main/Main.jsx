@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/global.sass";
 import "../../styles/main.sass";
 // import { Card } from "./Card";
 import { connect } from "react-redux";
@@ -25,12 +26,12 @@ class Main extends React.Component {
             <TransitionGroup className="mainWrapper__cards">
               {items
                 .filter(item => !item.isCompleted)
-                .map(({ _id, name }) => (
+                .map(({ _id, name, description, date }) => (
                   <CSSTransition key={_id} timeout={500} classNames="fade">
                     <ListGroupItem className="card">
                       <div className="card__toDo">
                         <i className="far fa-clock"></i>
-                        {_id.date}
+                        {date}
                         <Button
                           className="remove-btn"
                           color="danger"
@@ -40,7 +41,8 @@ class Main extends React.Component {
                           &times;
                         </Button>
                       </div>
-                      {name}
+                      <h3>{name}</h3>
+                      {description}
                     </ListGroupItem>
                   </CSSTransition>
                 ))}
@@ -51,7 +53,7 @@ class Main extends React.Component {
             <TransitionGroup className="mainWrapper__cards">
               {items
                 .filter(item => item.isCompleted)
-                .map(({ _id, name }) => (
+                .map(({ _id, name, description }) => (
                   <CSSTransition key={_id} timeout={500} classNames="fade">
                     <ListGroupItem className="card">
                       <div className="card__completed">
@@ -65,7 +67,8 @@ class Main extends React.Component {
                           &times;
                         </Button>
                       </div>
-                      {name}
+                      <h3>{name}</h3>
+                      {description}
                     </ListGroupItem>
                   </CSSTransition>
                 ))}

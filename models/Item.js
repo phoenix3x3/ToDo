@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// create Schema
-
 const ItemSchema = new Schema({
   name: {
     type: String,
@@ -10,11 +8,15 @@ const ItemSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now
+    default: new Date().getTime()
   },
   description: {
     type: String,
     default: ""
+  },
+  isCompleted: {
+    type: Boolean,
+    default: true
   }
 });
 
