@@ -14,9 +14,6 @@ export class Header extends React.Component {
         </div>
         <div className="headerWrapper__tools">
           <button className="headerWrapper__button">Add ToDo</button>
-          {/* <Media left href="#">
-            <Media object data-src="../../assets/avatar.png" alt="avatar" />
-          </Media> */}
         </div>
       </section>
     );

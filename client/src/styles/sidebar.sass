@@ -1,11 +1,12 @@
 $backgroundColor: rgb(14,26,53)
 $backgroundColor-hover: rgb(18,33,67)
+$hoverBordercolor: rgb(85, 132, 255)
+$circleColor: rgb(85, 132, 255)
 // make top-transition instead of left for mobile
 .wrapper__brandName
     cursor: default
 .wrapper__sideNavBar
     display: flex
-
     position: fixed
     background-color: $backgroundColor
     flex-direction: column
@@ -13,17 +14,19 @@ $backgroundColor-hover: rgb(18,33,67)
     height: 100%
     width: 0
     z-index: 1
-
     overflow-x: hidden
     transition: 0.5s
     &.show
-        // width: 180px
         width: 15vw
     &.hide
         width: 0
-
+    .fa-home, .fa-cog, .fa-circle
+        margin-right: 5px
+    .fa-circle
+        font-size: 35px
+        color: $circleColor
     .navBar__link, .wrapper__brandName
-        transition: 0.3s
+        transition: 0.2s
         display: flex
         justify-content: center
         align-items: center
@@ -33,6 +36,9 @@ $backgroundColor-hover: rgb(18,33,67)
         text-decoration: none
     .navBar__link
         padding: 15px
-        justify-content: center
+
+        // justify-content: flex-start
+        // margin-left: 40px
         &:hover
             background-color: $backgroundColor-hover
+            border-left: 5px solid $hoverBordercolor
