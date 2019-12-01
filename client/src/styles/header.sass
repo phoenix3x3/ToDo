@@ -25,8 +25,14 @@
     font-weight: bold
     border-radius: 5rem
     background-color: rgb(85, 132, 255)
+    pointer-events: auto
     &::before
         content: "+"
         color: rgb(166, 191, 255)
         margin-right: 5px
         font-size: 20px
+    &:hover
+        background-color: rgb(14,26,53)
+        transition: 0.4s
+    &:focus
+        outline: none

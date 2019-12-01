@@ -2,28 +2,19 @@ import React from "react";
 import "../../styles/main.sass";
 // import { Card } from "./Card";
 import { connect } from "react-redux";
-import { getItems } from "../../actions/itemActions";
+import { getItems, deleteItem } from "../../actions/itemActions";
 import PropTypes from "prop-types";
 import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 class Main extends React.Component {
-  // state = {
-  //   items: [
-  //     { id: uuid(), name: "First Task", isCompleted: true },
-  //     { id: uuid(), name: "Second Task", isCompleted: false },
-  //     { id: uuid(), name: "Third Task", isCompleted: true },
-  //     { id: uuid(), name: "Fourth Task", isCompleted: false }
-  //   ],
-  //   countToDo: 0,
-  //   countCompleted: 0
-  // };
-
   componentDidMount() {
     this.props.getItems();
   }
+  onDeleteClick = id => {
+    this.props.deleteItem(id);
+  };
   render() {
     const { items } = this.props.item;
-    // const { countToDo } = this.state;
     return (
       <section className="mainWrapper">
         <Container>
@@ -33,26 +24,23 @@ class Main extends React.Component {
           <ListGroup>
             <TransitionGroup className="mainWrapper__cards">
               {items
-                .filter(item => item.isCompleted)
-                .map(({ id, name }) => (
-                  <CSSTransition key={id} timeout={500} classNames="fade">
+                .filter(item => !item.isCompleted)
+                .map(({ _id, name }) => (
+                  <CSSTransition key={_id} timeout={500} classNames="fade">
                     <ListGroupItem className="card">
                       <div className="card__toDo">
-                        <i class="far fa-clock"></i>
+                        <i className="far fa-clock"></i>
+                        {_id.date}
                         <Button
                           className="remove-btn"
                           color="danger"
                           size="sm"
-                          onClick={() => {
-                            this.setState(state => ({
-                              items: state.items.filter(item => item.id !== id)
-                            }));
-                          }}
+                          onClick={this.onDeleteClick.bind(this, _id)}
                         >
                           &times;
                         </Button>
                       </div>
-                      {name}{" "}
+                      {name}
                     </ListGroupItem>
                   </CSSTransition>
                 ))}
@@ -62,26 +50,22 @@ class Main extends React.Component {
           <ListGroup>
             <TransitionGroup className="mainWrapper__cards">
               {items
-                .filter(item => !item.isCompleted)
-                .map(({ id, name }) => (
-                  <CSSTransition key={id} timeout={500} classNames="fade">
+                .filter(item => item.isCompleted)
+                .map(({ _id, name }) => (
+                  <CSSTransition key={_id} timeout={500} classNames="fade">
                     <ListGroupItem className="card">
                       <div className="card__completed">
-                        <i class="far fa-check-circle"></i>Completed!
+                        <i className="far fa-check-circle"></i>Completed!
                         <Button
                           className="remove-btn"
                           color="danger"
                           size="sm"
-                          onClick={() => {
-                            this.setState(state => ({
-                              items: state.items.filter(item => item.id !== id)
-                            }));
-                          }}
+                          onClick={this.onDeleteClick.bind(this, _id)}
                         >
                           &times;
                         </Button>
                       </div>
-                      {name}{" "}
+                      {name}
                     </ListGroupItem>
                   </CSSTransition>
                 ))}
@@ -102,4 +86,4 @@ const mapStateToProps = state => ({
   item: state.item
 });
 
-export default connect(mapStateToProps, { getItems })(Main);
+export default connect(mapStateToProps, { getItems, deleteItem })(Main);
