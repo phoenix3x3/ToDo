@@ -1,8 +1,10 @@
+$mainWrapperBackground: rgb(246, 247, 250)
+$titleToDocolor: rgb(14,26,53)
 .mainWrapper
     min-height: 88.8vh
-    background-color: rgb(246, 247, 250)
+    background-color: $mainWrapperBackground
     .title_toDo, .title_completed
-        color: rgb(14,26,53)
+        color: $titleToDocolor
         padding-top: 30px
         padding-bottom: 5px
     .fa-check-circle
@@ -18,9 +20,6 @@
     .card__toDo
         color: grey
     .remove-btn
-        // margin-top: 0.5rem
-        // margin-right: 0.5rem
-        // margin-left: 0.5rem
         margin: 0.5rem 0 0 0.5rem
     .fade-enter
         opacity: 0.01
