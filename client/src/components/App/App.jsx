@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "../store";
 import { Sidebar } from "../Sidebar";
 import { Header } from "../Header";
-import { Main } from "../Main";
+import Main from "../Main/Main";
 import { Settings } from "../Settings";
 import "../../styles/global.sass";
 import "../../styles/app.sass";
@@ -21,26 +23,28 @@ export class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <section className="wrapper">
-          <Sidebar isOpen={this.state.isSideNavBarOpen} />
-          <section
-            className={`wrapper__rightSide ${
-              this.state.isSideNavBarOpen ? "show" : "hide"
-            }`}
-          >
-            <Header onButtonClick={this.handleButtonClick} />
-            <Switch>
-              <Route exact path="/">
-                <Main />
-              </Route>
-              <Route path="/settings">
-                <Settings />
-              </Route>
-            </Switch>
+      <Provider store={store}>
+        <Router>
+          <section className="wrapper">
+            <Sidebar isOpen={this.state.isSideNavBarOpen} />
+            <section
+              className={`wrapper__rightSide ${
+                this.state.isSideNavBarOpen ? "show" : "hide"
+              }`}
+            >
+              <Header onButtonClick={this.handleButtonClick} />
+              <Switch>
+                <Route exact path="/">
+                  <Main />
+                </Route>
+                <Route path="/settings">
+                  <Settings />
+                </Route>
+              </Switch>
+            </section>
           </section>
-        </section>
-      </Router>
+        </Router>
+      </Provider>
     );
   }
 }

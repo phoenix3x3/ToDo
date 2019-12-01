@@ -8,37 +8,19 @@ export class Sidebar extends React.Component {
     return (
       <div className={`wrapper__sideNavBar ${isOpen ? "show" : "hide"}`}>
         <div>
-          <h1 className="wrapper__brandName">ToDo</h1>
+          <h1 className="wrapper__brandName">
+            <i className="far fa-circle"></i>ToDo
+          </h1>
         </div>
         <nav className="navBar">
-          <Link to="/" className="navBar__link">
-            Home
+          <Link to="/" className="navBar__link home">
+            <i className="fas fa-home"></i>Home
           </Link>
-          <Link to="/settings" className="navBar__link">
-            Settings
+          <Link to="/settings" className="navBar__link settings">
+            <i className="fas fa-cog"></i>Settings
           </Link>
         </nav>
       </div>
     );
   }
 }
-// class SideNavBar extends React.Component {
-//   render() {
-//     const { isOpen } = this.props;
-//     return (
-//       <Collapse isOpen={isOpen} className="wrapper__sideNavBar">
-//         <div className="wrapper__brandName">
-//           <h1>To Do</h1>
-//         </div>
-//         <nav className="nav-bar">
-//           <a className="nav-bar__link" href="/">
-//             Home
-//           </a>
-//           <a className="nav-bar__link" href="/">
-//             Settings
-//           </a>
-//         </nav>
-//       </Collapse>
-//     );
-//   }
-// }

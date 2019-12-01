@@ -2,12 +2,13 @@
 .headerWrapper
     display: flex
     align-items: center
-    height: 75px
+    height: 11.2vh
 .burgerMenu
     padding-left: 20px
     font-size: 19px
     width: 15px
     cursor: pointer
+    color: rgb(14,26,53)
 .headerWrapper__tools
     display: flex
     margin-left: auto
@@ -24,8 +25,14 @@
     font-weight: bold
     border-radius: 5rem
     background-color: rgb(85, 132, 255)
+    pointer-events: auto
     &::before
         content: "+"
         color: rgb(166, 191, 255)
         margin-right: 5px
         font-size: 20px
+    &:hover
+        background-color: rgb(14,26,53)
+        transition: 0.4s
+    &:focus
+        outline: none
