@@ -20,7 +20,10 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   const newItem = new Item({
-    name: req.body.name // add desc, priority
+    name: req.body.name,
+    isCompleted: false,
+    description: req.body.description,
+    date: new Date().getTime() // add desc, priority
   });
 
   newItem.save().then(item => res.json(item));

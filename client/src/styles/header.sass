@@ -1,18 +1,21 @@
-
+$burgerMenuColor: rgb(14,26,53)
+$headerWrapper__buttonPlusColor: rgb(166, 191, 255)
+$headerWrapper__buttonBackgroundcolor: rgb(85, 132, 255)
+$headerWrapper_buttonBackgroundcolor_hover: rgb(14,26,53)
 .headerWrapper
     display: flex
     align-items: center
     height: 11.2vh
-.burgerMenu
-    padding-left: 20px
-    font-size: 19px
-    width: 15px
-    cursor: pointer
-    color: rgb(14,26,53)
-.headerWrapper__tools
-    display: flex
-    margin-left: auto
-    margin-right: 3vw
+    .burgerMenu
+        padding-left: 20px
+        font-size: 19px
+        width: 15px
+        cursor: pointer
+        color: $burgerMenuColor
+    .headerWrapper__tools
+        display: flex
+        margin-left: auto
+        margin-right: 3vw
 .headerWrapper__button
     color: #ffffff
     display: inline-block
@@ -24,15 +27,15 @@
     font-style: 1rem
     font-weight: bold
     border-radius: 5rem
-    background-color: rgb(85, 132, 255)
+    background-color: $headerWrapper__buttonBackgroundcolor
     pointer-events: auto
     &::before
         content: "+"
-        color: rgb(166, 191, 255)
+        color: $headerWrapper__buttonPlusColor
         margin-right: 5px
         font-size: 20px
     &:hover
-        background-color: rgb(14,26,53)
+        background-color: $headerWrapper_buttonBackgroundcolor_hover
         transition: 0.4s
     &:focus
         outline: none
